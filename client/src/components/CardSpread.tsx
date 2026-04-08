@@ -1,14 +1,14 @@
-/*
- * CardSpread — V2 "Brutal Oracle"
- * Design: Pure black section. Editorial header. Card fan with new card back.
- * Purple accent fills, Space Mono labels, Bebas Neue headings.
+/**
+ * V3 CardSpread — "Dark Goddess" Feminine Luxury Oracle
+ * Design: Dark section, Cormorant Garamond headers, new sacred geometry card back
+ * Preserves the smooth arc fan layout and card flip animation from V1
  */
 
 import { useState, useEffect } from "react";
 import { majorArcana, type TarotCard } from "@/lib/tarotData";
 import CardReading from "./CardReading";
 
-const CARD_BACK = "https://d2xsxph8kpxj0f.cloudfront.net/310519663477101494/69cLE9yNAHUj9QzK7nHhZX/card-back-v2-UvN8B6RejnKtKSoMDud3cM.webp";
+const CARD_BACK = "https://d2xsxph8kpxj0f.cloudfront.net/310519663477101494/69cLE9yNAHUj9QzK7nHhZX/v3-card-back-3TJv3jtwk9jJd6FTzXjaz7.png";
 
 function useWindowWidth() {
   const [width, setWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 1024);
@@ -32,12 +32,12 @@ function CardFan({ onCardSelected }: { onCardSelected: (card: TarotCard, reverse
   const isMobile = windowWidth < 640;
   const isTablet = windowWidth < 1024;
   const cardCount = isMobile ? 7 : isTablet ? 9 : 11;
-  const cardW = isMobile ? 52 : isTablet ? 64 : 76;
-  const cardH = isMobile ? 88 : isTablet ? 108 : 128;
+  const cardW = isMobile ? 54 : isTablet ? 66 : 78;
+  const cardH = isMobile ? 92 : isTablet ? 112 : 132;
   const spreadAngle = isMobile ? 28 : isTablet ? 32 : 36;
-  const spreadRadius = isMobile ? 280 : isTablet ? 340 : 400;
+  const spreadRadius = isMobile ? 280 : isTablet ? 340 : 420;
 
-  const shuffled = [...majorArcana].sort(() => Math.random() - 0.5).slice(0, cardCount);
+  const [shuffled] = useState(() => [...majorArcana].sort(() => Math.random() - 0.5).slice(0, cardCount));
 
   const handleSelect = (idx: number) => {
     if (selectedIdx !== null) return;
@@ -50,7 +50,7 @@ function CardFan({ onCardSelected }: { onCardSelected: (card: TarotCard, reverse
   return (
     <div
       className="relative flex items-end justify-center"
-      style={{ height: isMobile ? 200 : isTablet ? 260 : 300, width: "100%" }}
+      style={{ height: isMobile ? 200 : isTablet ? 260 : 310, width: "100%" }}
     >
       {shuffled.map((_, idx) => {
         const t = cardCount <= 1 ? 0.5 : idx / (cardCount - 1);
@@ -64,21 +64,22 @@ function CardFan({ onCardSelected }: { onCardSelected: (card: TarotCard, reverse
         return (
           <div
             key={idx}
-            className="absolute bottom-0 tarot-card"
+            className="absolute bottom-0"
             style={{
               width: cardW,
               height: cardH,
               left: `calc(50% + ${x}px - ${cardW / 2}px)`,
               bottom: `${-y + 10}px`,
-              transform: `rotate(${angle}deg)${isHovered ? " translateY(-16px) scale(1.05)" : ""}${isSelected ? " translateY(-24px) scale(1.08)" : ""}`,
+              transform: `rotate(${angle}deg)${isHovered ? " translateY(-18px) scale(1.06)" : ""}${isSelected ? " translateY(-26px) scale(1.1)" : ""}`,
               zIndex: isHovered || isSelected ? 50 : idx,
-              transition: "transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease",
+              transition: "transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease",
               boxShadow: isSelected
-                ? "0 20px 60px rgba(123,47,190,0.7), 0 0 0 1px rgba(169,162,190,0.4)"
+                ? "0 20px 60px rgba(124,58,237,0.7), 0 0 0 1px rgba(196,181,253,0.4)"
                 : isHovered
-                ? "0 12px 40px rgba(123,47,190,0.5), 0 0 0 1px rgba(169,162,190,0.2)"
-                : "0 4px 20px rgba(0,0,0,0.6)",
+                ? "0 14px 40px rgba(124,58,237,0.5), 0 0 0 1px rgba(167,139,250,0.25)"
+                : "0 6px 24px rgba(0,0,0,0.7)",
               cursor: selectedIdx !== null ? "default" : "pointer",
+              borderRadius: "6px",
             }}
             onMouseEnter={() => selectedIdx === null && setHoveredIdx(idx)}
             onMouseLeave={() => setHoveredIdx(null)}
@@ -88,7 +89,7 @@ function CardFan({ onCardSelected }: { onCardSelected: (card: TarotCard, reverse
               src={CARD_BACK}
               alt="Tarot card"
               className="w-full h-full object-cover"
-              style={{ borderRadius: 4 }}
+              style={{ borderRadius: "6px" }}
               draggable={false}
             />
           </div>
@@ -118,44 +119,49 @@ export default function CardSpread({ id }: CardSpreadProps) {
   };
 
   return (
-    <section id={id} className="relative bg-[#0a0a0a] py-24 overflow-hidden">
-      {/* Subtle grid */}
-      <div className="absolute inset-0 grid-overlay opacity-50 pointer-events-none" />
+    <section id={id} className="relative py-28 overflow-hidden" style={{ background: "#08080e" }}>
+      {/* Top divider */}
+      <div className="absolute top-0 left-0 right-0 divider-iridescent" />
 
-      {/* Purple accent line top */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#7B2FBE] to-transparent opacity-50" />
+      {/* Ambient glow */}
+      <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0 }}>
+        <div style={{ position: "absolute", top: "20%", left: "50%", transform: "translateX(-50%)", width: "600px", height: "400px", background: "radial-gradient(ellipse, rgba(124,58,237,0.07) 0%, transparent 70%)", filter: "blur(60px)" }} />
+      </div>
 
-      <div className="container mx-auto">
+      <div className="container mx-auto relative" style={{ zIndex: 1 }}>
         {/* Section header */}
-        <div className="flex items-start justify-between mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-6 h-px bg-[#7B2FBE]" />
-              <span className="font-mono text-[10px] tracking-[0.4em] text-[#8575a4] uppercase">
-                The Reading
-              </span>
+            <div className="flex items-center gap-3 mb-5">
+              <div style={{ width: "30px", height: "1px", background: "rgba(167,139,250,0.5)" }} />
+              <span className="font-ui text-xs tracking-[0.35em] uppercase" style={{ color: "rgba(167,139,250,0.5)" }}>The Reading</span>
             </div>
-            <h2 className="font-display text-[clamp(40px,7vw,90px)] leading-none text-white">
-              THE SPREAD
+            <h2 className="font-display leading-none" style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)", fontWeight: 300, color: "rgba(240,238,255,0.9)", letterSpacing: "-0.02em" }}>
+              The Spread
             </h2>
           </div>
-          <div className="hidden md:block text-right">
-            <div className="font-mono text-[10px] tracking-[0.3em] text-[#5c566b] uppercase mb-1">
-              Focus your intention
-            </div>
-            <div className="font-mono text-[10px] tracking-[0.3em] text-[#5c566b] uppercase">
-              Select the card that calls to you
-            </div>
+          <div className="hidden md:block text-right mt-4 md:mt-0">
+            <p className="font-body text-sm" style={{ color: "rgba(226,232,240,0.3)", fontWeight: 300, lineHeight: 1.7 }}>
+              Focus your intention.<br />Select the card that calls to you.
+            </p>
           </div>
         </div>
 
         {phase === "spread" && (
           <>
-            <p className="font-mono text-[11px] tracking-[0.3em] text-[#5c566b] uppercase text-center mb-12">
-              Tap a card to reveal your reading
+            <p className="font-ui text-xs tracking-[0.3em] uppercase text-center mb-14" style={{ color: "rgba(167,139,250,0.4)" }}>
+              Touch a card to reveal your reading
             </p>
             <div className="relative">
               <CardFan key={spreadKey} onCardSelected={handleCardSelected} />
+            </div>
+            {/* Instruction hint */}
+            <div className="flex items-center justify-center gap-3 mt-12">
+              <div style={{ width: "20px", height: "1px", background: "rgba(167,139,250,0.3)" }} />
+              <span className="font-body text-xs" style={{ color: "rgba(255,255,255,0.2)", fontWeight: 300, letterSpacing: "0.05em" }}>
+                Each reading is unique to this moment
+              </span>
+              <div style={{ width: "20px", height: "1px", background: "rgba(167,139,250,0.3)" }} />
             </div>
           </>
         )}
@@ -169,8 +175,8 @@ export default function CardSpread({ id }: CardSpreadProps) {
         )}
       </div>
 
-      {/* Bottom accent */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#5b4775] to-transparent opacity-40" />
+      {/* Bottom divider */}
+      <div className="absolute bottom-0 left-0 right-0 divider-iridescent" />
     </section>
   );
 }

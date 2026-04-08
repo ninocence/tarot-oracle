@@ -1,13 +1,13 @@
-/*
- * SalesCTA — V2 "Brutal Oracle"
- * Design: Full-bleed purple fill section. Bold display type.
- * Email capture + Etsy CTA. Asymmetric layout.
+/**
+ * V3 SalesCTA — "Dark Goddess" Feminine Luxury Oracle
+ * Design: Dark section with iridescent liquid texture background, Cormorant display type,
+ * glass-morphism email capture, elegant Etsy CTA.
  */
 
 import { useState } from "react";
 import { toast } from "sonner";
 
-const LIQUID_TEXTURE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663477101494/69cLE9yNAHUj9QzK7nHhZX/liquid-purple-texture-ccexfu4S82KyRpXKZManwv.webp";
+const LIQUID_TEXTURE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663477101494/69cLE9yNAHUj9QzK7nHhZX/v3-liquid-bg-CqCPTcRGEPDpjbKfbLkLHi.webp";
 
 export default function SalesCTA() {
   const [email, setEmail] = useState("");
@@ -16,65 +16,54 @@ export default function SalesCTA() {
     e.preventDefault();
     if (email) {
       toast.success("You're in. Daily readings incoming.", {
-        style: { background: "#1f1e2c", border: "1px solid #5b4775", color: "#c8c0e0" },
+        style: { background: "#0f0f1a", border: "1px solid rgba(124,58,237,0.4)", color: "rgba(196,181,253,0.9)" },
       });
       setEmail("");
     }
   };
 
   return (
-    <section className="relative bg-[#0a0a0a] overflow-hidden">
-      {/* Purple fill block */}
-      <div className="relative bg-[#5b4775] overflow-hidden">
-        {/* Liquid texture overlay */}
-        <div
-          className="absolute inset-0 opacity-20 mix-blend-overlay"
-          style={{
-            backgroundImage: `url(${LIQUID_TEXTURE})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
+    <section className="relative overflow-hidden" style={{ background: "#08080e" }}>
+      {/* Full deck CTA */}
+      <div className="relative overflow-hidden" style={{ background: "linear-gradient(135deg, #1a0a2e 0%, #0f0f1a 40%, #1e0a3c 100%)" }}>
+        {/* Liquid texture */}
+        <div className="absolute inset-0" style={{ backgroundImage: `url(${LIQUID_TEXTURE})`, backgroundSize: "cover", backgroundPosition: "center", opacity: 0.12, mixBlendMode: "overlay" }} />
+        {/* Glow */}
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 30% 50%, rgba(124,58,237,0.2) 0%, transparent 60%)" }} />
 
-        <div className="relative z-10 container mx-auto py-20 px-6 md:px-12">
-          <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-10">
-            <div className="max-w-xl">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-6 h-px bg-white opacity-40" />
-                <span className="font-mono text-[10px] tracking-[0.4em] text-white/60 uppercase">
-                  The Full Deck
-                </span>
+        <div className="relative z-10 container mx-auto py-24">
+          <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-12">
+            <div className="max-w-lg">
+              <div className="flex items-center gap-3 mb-8">
+                <div style={{ width: "30px", height: "1px", background: "rgba(255,255,255,0.3)" }} />
+                <span className="font-ui text-xs tracking-[0.35em] uppercase" style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.65rem" }}>The Full Deck</span>
               </div>
-              <h2 className="font-display text-[clamp(48px,8vw,110px)] leading-none text-white mb-4">
-                GET THE<br />FULL DECK
+              <h2 className="font-display leading-none mb-6" style={{ fontSize: "clamp(3rem, 7vw, 7rem)", fontWeight: 300, color: "rgba(240,238,255,0.95)", letterSpacing: "-0.02em" }}>
+                Get the<br />
+                <span className="font-display-italic" style={{ fontStyle: "italic" }}>Full Deck</span>
               </h2>
-              <p className="font-body text-white/70 text-sm leading-relaxed max-w-sm mb-8">
+              <p className="font-body mb-10 max-w-sm" style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.9rem", fontWeight: 300, lineHeight: 1.85, letterSpacing: "0.02em" }}>
                 78 cards. Major and Minor Arcana. Printed on premium matte stock with gilded edges. A complete oracle for your practice.
               </p>
               <a
                 href="https://www.etsy.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-white text-[#1f1e2c] font-mono text-xs tracking-[0.3em] uppercase px-8 py-4 hover:bg-[#c8c0e0] transition-colors"
+                className="inline-flex items-center gap-3 font-ui text-sm tracking-[0.15em] uppercase px-8 py-4 transition-all duration-300"
+                style={{ background: "rgba(255,255,255,0.9)", color: "#08080e", letterSpacing: "0.15em" }}
+                onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,1)"; e.currentTarget.style.transform = "translateY(-1px)"; }}
+                onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.9)"; e.currentTarget.style.transform = "translateY(0)"; }}
               >
-                Shop on Etsy
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                Shop on Etsy →
               </a>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 gap-8 lg:gap-12">
-              {[
-                { num: "78", label: "Cards" },
-                { num: "22", label: "Major Arcana" },
-                { num: "56", label: "Minor Arcana" },
-                { num: "∞", label: "Readings" },
-              ].map(({ num, label }) => (
-                <div key={label} className="text-center">
-                  <div className="font-display text-[48px] leading-none text-white mb-1">{num}</div>
-                  <div className="font-mono text-[9px] tracking-[0.3em] text-white/50 uppercase">{label}</div>
+            {/* Stats grid */}
+            <div className="grid grid-cols-2 gap-10 lg:gap-14">
+              {[["78", "Cards"], ["22", "Major Arcana"], ["56", "Minor Arcana"], ["∞", "Readings"]].map(([n, l]) => (
+                <div key={l} className="text-center">
+                  <div className="font-display" style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 300, color: "rgba(240,238,255,0.85)", lineHeight: 1 }}>{n}</div>
+                  <div className="font-ui text-xs tracking-[0.25em] uppercase mt-2" style={{ color: "rgba(255,255,255,0.3)", fontSize: "0.6rem" }}>{l}</div>
                 </div>
               ))}
             </div>
@@ -82,21 +71,19 @@ export default function SalesCTA() {
         </div>
       </div>
 
-      {/* Email capture — dark strip */}
-      <div className="relative bg-[#0f0f14] border-t border-[#1f1e2c]">
-        <div className="container mx-auto py-16 px-6 md:px-12">
+      {/* Email capture */}
+      <div className="relative" style={{ borderTop: "1px solid rgba(255,255,255,0.05)", background: "#0a0a12" }}>
+        <div className="container mx-auto py-16">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
             <div>
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-6 h-px bg-[#7B2FBE]" />
-                <span className="font-mono text-[10px] tracking-[0.4em] text-[#8575a4] uppercase">
-                  Daily Oracle
-                </span>
+              <div className="flex items-center gap-3 mb-4">
+                <div style={{ width: "24px", height: "1px", background: "rgba(124,58,237,0.5)" }} />
+                <span className="font-ui text-xs tracking-[0.35em] uppercase" style={{ color: "rgba(167,139,250,0.5)", fontSize: "0.65rem" }}>Daily Oracle</span>
               </div>
-              <h3 className="font-display text-[clamp(28px,4vw,52px)] leading-none text-white mb-2">
-                FREE DAILY READING
+              <h3 className="font-display leading-none mb-2" style={{ fontSize: "clamp(1.8rem, 4vw, 3.5rem)", fontWeight: 300, color: "rgba(240,238,255,0.88)", letterSpacing: "-0.01em" }}>
+                Free Daily Reading
               </h3>
-              <p className="font-body text-[#8575a4] text-sm">
+              <p className="font-body" style={{ color: "rgba(226,232,240,0.35)", fontSize: "0.85rem", fontWeight: 300 }}>
                 One card. Every morning. In your inbox.
               </p>
             </div>
@@ -108,11 +95,24 @@ export default function SalesCTA() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
                 required
-                className="flex-1 bg-[#1f1e2c] border border-[#5b4775] border-r-0 px-5 py-4 font-mono text-xs text-[#c8c0e0] placeholder-[#5c566b] tracking-wider outline-none focus:border-[#8575a4] transition-colors"
+                className="flex-1 px-5 py-4 font-body text-sm outline-none transition-all duration-300"
+                style={{
+                  background: "rgba(255,255,255,0.03)",
+                  border: "1px solid rgba(124,58,237,0.25)",
+                  borderRight: "none",
+                  color: "rgba(226,232,240,0.8)",
+                  fontSize: "0.85rem",
+                  fontWeight: 300,
+                }}
+                onFocus={e => { e.currentTarget.style.borderColor = "rgba(167,139,250,0.5)"; e.currentTarget.style.background = "rgba(124,58,237,0.05)"; }}
+                onBlur={e => { e.currentTarget.style.borderColor = "rgba(124,58,237,0.25)"; e.currentTarget.style.background = "rgba(255,255,255,0.03)"; }}
               />
               <button
                 type="submit"
-                className="bg-[#7B2FBE] text-white font-mono text-xs tracking-[0.3em] uppercase px-6 py-4 hover:bg-[#8575a4] transition-colors whitespace-nowrap"
+                className="font-ui text-xs tracking-[0.2em] uppercase px-6 py-4 transition-all duration-300 whitespace-nowrap"
+                style={{ background: "rgba(124,58,237,0.8)", color: "rgba(240,238,255,0.9)", letterSpacing: "0.15em", border: "1px solid rgba(124,58,237,0.4)" }}
+                onMouseEnter={e => { e.currentTarget.style.background = "rgba(124,58,237,1)"; }}
+                onMouseLeave={e => { e.currentTarget.style.background = "rgba(124,58,237,0.8)"; }}
               >
                 Subscribe
               </button>

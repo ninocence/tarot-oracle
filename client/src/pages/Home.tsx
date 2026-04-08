@@ -1,7 +1,6 @@
-/*
- * Home — V2 "Brutal Oracle"
- * Design: Pure black canvas. Sections flow from hero → spread → CTA → footer.
- * Nav is embedded in HeroSection. No fixed overlay nav needed.
+/**
+ * Home — V3 "Dark Goddess" Feminine Luxury Oracle
+ * Design: Deep black canvas. Sections flow: hero → spread → CTA → footer.
  */
 
 import { useRef, useCallback } from "react";
@@ -18,7 +17,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
+    <div className="min-h-screen text-white" style={{ background: "#08080e" }}>
       <HeroSection onPullCard={handlePullCard} />
       <div ref={spreadRef}>
         <CardSpread id="card-spread" />

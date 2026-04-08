@@ -1,15 +1,12 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
-import { Route, Router as WouterRouter, Switch } from "wouter";
+import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 
-// Support GitHub Pages subpath deployment via VITE_BASE_PATH
-const base = (import.meta.env.BASE_URL || "/").replace(/\/$/, "");
-
-function Routes() {
+function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
@@ -25,9 +22,7 @@ function App() {
       <ThemeProvider defaultTheme="dark">
         <TooltipProvider>
           <Toaster />
-          <WouterRouter base={base}>
-            <Routes />
-          </WouterRouter>
+          <Router />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

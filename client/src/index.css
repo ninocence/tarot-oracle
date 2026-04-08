@@ -1,11 +1,25 @@
-/*
- * THE ORACLE — V2 REDESIGN
- * Design System: "Brutal Oracle"
- * Movement: Neo-Brutalism meets Y3K Luxury
- * Colors: Pure black #0a0a0a, Purple fill #7B2FBE / #5b4775, Lavender #a9a2be, Chrome white
- * Typography: Bebas Neue (display/hero), DM Serif Display (card names), Space Grotesk (body), Space Mono (labels/data)
- * Layout: Asymmetric, full-bleed, editorial grid overlays, type bleeding over images
- */
+/* ============================================================
+   V3 DESIGN: "DARK GODDESS" — Feminine Luxury Oracle
+   ============================================================
+   Design Philosophy: High-fashion editorial meets ancient mysticism.
+   Inspired by: liquid chrome goddess, iridescent violet palette,
+   Cormorant Garamond elegance, dark cosmic energy.
+
+   Color Palette:
+   - Background: #08080e (near-black with blue undertone)
+   - Surface: #0f0f1a
+   - Primary accent: #7c3aed (violet)
+   - Secondary: #a78bfa (lavender)
+   - Highlight: #c4b5fd (soft lilac)
+   - Chrome: #e2e8f0 (silver-white)
+   - Warm: #d8b4fe (mauve-purple)
+   - Glow: rgba(139, 92, 246, 0.4)
+
+   Typography:
+   - Display: Cormorant Garamond (Light 300, Italic) — mystical, feminine
+   - UI: Space Grotesk (Light 300) — modern, editorial
+   - Body: DM Sans (Light 200/300) — clean, readable
+   ============================================================ */
 
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -32,56 +46,33 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
 }
 
 :root {
-  --radius: 0;
-  --background: oklch(0.06 0 0);
-  --foreground: oklch(0.97 0 0);
-  --card: oklch(0.09 0.005 290);
-  --card-foreground: oklch(0.97 0 0);
-  --popover: oklch(0.09 0.005 290);
-  --popover-foreground: oklch(0.97 0 0);
-  --primary: oklch(0.52 0.22 295);
-  --primary-foreground: oklch(0.97 0 0);
-  --secondary: oklch(0.64 0.09 295);
-  --secondary-foreground: oklch(0.97 0 0);
-  --muted: oklch(0.15 0.01 290);
-  --muted-foreground: oklch(0.65 0.04 290);
-  --accent: oklch(0.52 0.22 295);
-  --accent-foreground: oklch(0.97 0 0);
+  --radius: 0.25rem;
+  --background: oklch(0.06 0.015 280);
+  --foreground: oklch(0.92 0.01 280);
+  --card: oklch(0.09 0.018 280);
+  --card-foreground: oklch(0.92 0.01 280);
+  --popover: oklch(0.09 0.018 280);
+  --popover-foreground: oklch(0.92 0.01 280);
+  --primary: oklch(0.55 0.22 295);
+  --primary-foreground: oklch(0.98 0.005 280);
+  --secondary: oklch(0.72 0.14 295);
+  --secondary-foreground: oklch(0.06 0.015 280);
+  --muted: oklch(0.14 0.02 280);
+  --muted-foreground: oklch(0.65 0.06 280);
+  --accent: oklch(0.72 0.14 295);
+  --accent-foreground: oklch(0.06 0.015 280);
   --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
   --border: oklch(1 0 0 / 8%);
   --input: oklch(1 0 0 / 10%);
-  --ring: oklch(0.52 0.22 295);
-
-  /* Custom oracle tokens */
-  --purple-deep: #1f1e2c;
-  --purple-mid: #5b4775;
-  --purple-accent: #8575a4;
-  --purple-light: #a9a2be;
-  --purple-bright: #7B2FBE;
-  --purple-neon: #9b59b6;
-  --lavender: #c8c0e0;
-  --chrome: #e8e4f0;
-  --black: #0a0a0a;
-  --black-soft: #111118;
-}
-
-.dark {
-  --background: oklch(0.06 0 0);
-  --foreground: oklch(0.97 0 0);
-  --card: oklch(0.09 0.005 290);
-  --card-foreground: oklch(0.97 0 0);
-  --primary: oklch(0.52 0.22 295);
-  --primary-foreground: oklch(0.97 0 0);
-  --muted: oklch(0.15 0.01 290);
-  --muted-foreground: oklch(0.65 0.04 290);
-  --border: oklch(1 0 0 / 8%);
-  --input: oklch(1 0 0 / 10%);
+  --ring: oklch(0.55 0.22 295);
 }
 
 @layer base {
@@ -94,208 +85,39 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-weight: 300;
-    background-color: #0a0a0a;
-    color: #f0eeff;
+    -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
-    cursor: default;
+    background-color: #08080e;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
   a[href] {
     @apply cursor-pointer;
   }
-  ::selection {
-    background: rgba(123, 47, 190, 0.4);
-    color: #fff;
-  }
 }
 
-/* ── Typography ── */
+/* ============================================================
+   TYPOGRAPHY UTILITIES
+   ============================================================ */
 .font-display {
-  font-family: 'Bebas Neue', sans-serif;
-  letter-spacing: 0.04em;
+  font-family: 'Cormorant Garamond', serif;
 }
-.font-serif {
-  font-family: 'DM Serif Display', serif;
+.font-display-italic {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
 }
-.font-mono {
-  font-family: 'Space Mono', monospace;
+.font-ui {
+  font-family: 'Space Grotesk', sans-serif;
 }
 .font-body {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 300;
+  font-family: 'DM Sans', sans-serif;
 }
 
-/* ── Scrollbar ── */
-::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: #0a0a0a; }
-::-webkit-scrollbar-thumb { background: #5b4775; }
-
-/* ── Utility: Purple glow ── */
-.glow-purple {
-  box-shadow: 0 0 30px rgba(123, 47, 190, 0.4), 0 0 80px rgba(123, 47, 190, 0.15);
-}
-.glow-purple-text {
-  text-shadow: 0 0 40px rgba(169, 162, 190, 0.6), 0 0 80px rgba(123, 47, 190, 0.3);
-}
-.glow-white-text {
-  text-shadow: 0 0 20px rgba(255,255,255,0.3);
-}
-
-/* ── Noise texture overlay ── */
-.noise::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
-  opacity: 0.03;
-  z-index: 1;
-}
-
-/* ── Grid overlay ── */
-.grid-overlay {
-  background-image: 
-    linear-gradient(rgba(169, 162, 190, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(169, 162, 190, 0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
-/* ── Card flip ── */
-.card-flip-container {
-  perspective: 1200px;
-}
-.card-flip-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.card-flip-inner.flipped {
-  transform: rotateY(180deg);
-}
-.card-face {
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-.card-face-back {
-  transform: rotateY(180deg);
-}
-
-/* ── Purple fill button ── */
-.btn-oracle {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 32px;
-  background: #7B2FBE;
-  color: #fff;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 500;
-  font-size: 13px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  position: relative;
-  overflow: hidden;
-}
-.btn-oracle::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 60%);
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-.btn-oracle:hover::before { opacity: 1; }
-.btn-oracle:hover {
-  background: #8B3FD0;
-  box-shadow: 0 0 30px rgba(123, 47, 190, 0.5);
-  transform: translateY(-1px);
-}
-.btn-oracle:active { transform: translateY(0); }
-
-/* ── Ghost button ── */
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 13px 32px;
-  background: transparent;
-  color: #f0eeff;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 400;
-  font-size: 13px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  border: 1px solid rgba(169, 162, 190, 0.3);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.btn-ghost:hover {
-  border-color: rgba(169, 162, 190, 0.7);
-  background: rgba(169, 162, 190, 0.05);
-}
-
-/* ── Marquee ── */
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-.marquee-track {
-  animation: marquee 20s linear infinite;
-}
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
-/* ── Float animation ── */
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  33% { transform: translateY(-18px) rotate(1deg); }
-  66% { transform: translateY(-8px) rotate(-1deg); }
-}
-.float-anim {
-  animation: float 7s ease-in-out infinite;
-}
-
-/* ── Pulse glow ── */
-@keyframes pulseGlow {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
-}
-.pulse-glow {
-  animation: pulseGlow 3s ease-in-out infinite;
-}
-
-/* ── Card hover ── */
-.tarot-card {
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
-  cursor: pointer;
-}
-.tarot-card:hover {
-  transform: translateY(-12px) scale(1.03);
-  box-shadow: 0 20px 60px rgba(123, 47, 190, 0.5), 0 0 0 1px rgba(169, 162, 190, 0.2);
-}
-.tarot-card.selected {
-  transform: translateY(-20px) scale(1.06);
-  box-shadow: 0 30px 80px rgba(123, 47, 190, 0.7), 0 0 0 1px rgba(169, 162, 190, 0.4);
-}
-
-/* ── Scan line ── */
-@keyframes scanline {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
-}
-
-/* ── Container ── */
+/* ============================================================
+   LAYOUT
+   ============================================================ */
 @layer components {
   .container {
     width: 100%;
@@ -303,10 +125,6 @@
     margin-right: auto;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-  }
-  .flex {
-    min-height: 0;
-    min-width: 0;
   }
   @media (min-width: 768px) {
     .container {
@@ -316,10 +134,205 @@
   }
   @media (min-width: 1280px) {
     .container {
+      max-width: 1400px;
       padding-left: 4rem;
       padding-right: 4rem;
-      max-width: 1440px;
     }
   }
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
 }
-/* cache-bust-v2 */
+
+/* ============================================================
+   GLOW EFFECTS
+   ============================================================ */
+.glow-violet {
+  box-shadow: 0 0 40px rgba(124, 58, 237, 0.3), 0 0 80px rgba(124, 58, 237, 0.1);
+}
+.glow-violet-text {
+  text-shadow: 0 0 30px rgba(167, 139, 250, 0.6), 0 0 60px rgba(124, 58, 237, 0.3);
+}
+.glow-chrome {
+  box-shadow: 0 0 30px rgba(226, 232, 240, 0.15), 0 0 60px rgba(167, 139, 250, 0.1);
+}
+
+/* ============================================================
+   CARD FLIP ANIMATION
+   ============================================================ */
+.card-scene {
+  perspective: 1000px;
+}
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-inner.flipped {
+  transform: rotateY(180deg);
+}
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.card-back-face {
+  /* front of the physical card (face-down) */
+}
+.card-front-face {
+  transform: rotateY(180deg);
+}
+
+/* ============================================================
+   IRIDESCENT SHIMMER
+   ============================================================ */
+@keyframes iridescent-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.iridescent-bg {
+  background: linear-gradient(
+    135deg,
+    #08080e 0%,
+    #1a0a2e 20%,
+    #0d0d1f 40%,
+    #1e0a3c 60%,
+    #0a0a18 80%,
+    #08080e 100%
+  );
+  background-size: 300% 300%;
+  animation: iridescent-shift 12s ease infinite;
+}
+
+/* ============================================================
+   FLOATING ANIMATION
+   ============================================================ */
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-12px) rotate(0.5deg); }
+  66% { transform: translateY(-6px) rotate(-0.5deg); }
+}
+.float-gentle {
+  animation: float-gentle 8s ease-in-out infinite;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+.float-slow {
+  animation: float-slow 12s ease-in-out infinite;
+}
+
+/* ============================================================
+   TICKER / MARQUEE
+   ============================================================ */
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker-track {
+  animation: ticker-scroll 30s linear infinite;
+  white-space: nowrap;
+  display: inline-flex;
+}
+
+/* ============================================================
+   CARD HOVER
+   ============================================================ */
+@keyframes card-glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(124, 58, 237, 0.2), 0 4px 30px rgba(0,0,0,0.5); }
+  50% { box-shadow: 0 0 40px rgba(167, 139, 250, 0.4), 0 4px 40px rgba(0,0,0,0.6); }
+}
+.card-hover:hover {
+  animation: card-glow-pulse 2s ease-in-out infinite;
+  transform: translateY(-8px) scale(1.03);
+  transition: transform 0.3s ease;
+}
+
+/* ============================================================
+   GRADIENT OVERLAYS
+   ============================================================ */
+.gradient-fade-bottom {
+  background: linear-gradient(to bottom, transparent 0%, #08080e 100%);
+}
+.gradient-fade-top {
+  background: linear-gradient(to top, transparent 0%, #08080e 100%);
+}
+.gradient-fade-left {
+  background: linear-gradient(to left, transparent 0%, #08080e 70%);
+}
+
+/* ============================================================
+   GLASS PANEL
+   ============================================================ */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.glass-panel-violet {
+  background: rgba(124, 58, 237, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(167, 139, 250, 0.15);
+}
+
+/* ============================================================
+   DIVIDER LINE
+   ============================================================ */
+.divider-iridescent {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.4), rgba(196, 181, 253, 0.6), rgba(167, 139, 250, 0.4), transparent);
+}
+
+/* ============================================================
+   SCROLL FADE-IN
+   ============================================================ */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  animation: fade-up 0.8s ease forwards;
+}
+.fade-up-delay-1 { animation-delay: 0.1s; opacity: 0; }
+.fade-up-delay-2 { animation-delay: 0.2s; opacity: 0; }
+.fade-up-delay-3 { animation-delay: 0.3s; opacity: 0; }
+.fade-up-delay-4 { animation-delay: 0.4s; opacity: 0; }
+.fade-up-delay-5 { animation-delay: 0.5s; opacity: 0; }
+
+/* ============================================================
+   PARTICLE CANVAS
+   ============================================================ */
+#particle-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #08080e; }
+::-webkit-scrollbar-thumb { background: rgba(124, 58, 237, 0.4); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(167, 139, 250, 0.6); }
+
+/* ============================================================
+   SELECTION
+   ============================================================ */
+::selection {
+  background: rgba(124, 58, 237, 0.3);
+  color: #e2e8f0;
+}
