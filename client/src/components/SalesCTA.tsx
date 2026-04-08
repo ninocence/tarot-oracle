@@ -1,14 +1,13 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { toast } from "sonner";
-
 /*
- * LIQUID ORACLE — SalesCTA
- * Design: Glassmorphism CTA section with email capture.
- * Gradient accents, editorial layout, iridescent highlights.
+ * SalesCTA — V2 "Brutal Oracle"
+ * Design: Full-bleed purple fill section. Bold display type.
+ * Email capture + Etsy CTA. Asymmetric layout.
  */
 
-const ORB_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663477101494/69cLE9yNAHUj9QzK7nHhZX/mystical-orb-PsTZ9N9YQ9zV3qea9uTRYD.webp";
+import { useState } from "react";
+import { toast } from "sonner";
+
+const LIQUID_TEXTURE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663477101494/69cLE9yNAHUj9QzK7nHhZX/liquid-purple-texture-ccexfu4S82KyRpXKZManwv.webp";
 
 export default function SalesCTA() {
   const [email, setEmail] = useState("");
@@ -16,132 +15,110 @@ export default function SalesCTA() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
-      toast.success("Welcome to the Oracle! Check your inbox for your first daily reading.", {
-        style: {
-          background: "rgba(18, 18, 26, 0.95)",
-          border: "1px solid rgba(123, 47, 190, 0.3)",
-          color: "#E8DAEF",
-        },
+      toast.success("You're in. Daily readings incoming.", {
+        style: { background: "#1f1e2c", border: "1px solid #5b4775", color: "#c8c0e0" },
       });
       setEmail("");
     }
   };
 
   return (
-    <section className="relative py-24 sm:py-32 overflow-hidden">
-      {/* Ambient glow */}
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] opacity-10 pointer-events-none"
-        style={{
-          background: "radial-gradient(circle, rgba(123,47,190,0.5) 0%, transparent 60%)",
-        }}
-      />
+    <section className="relative bg-[#0a0a0a] overflow-hidden">
+      {/* Purple fill block */}
+      <div className="relative bg-[#5b4775] overflow-hidden">
+        {/* Liquid texture overlay */}
+        <div
+          className="absolute inset-0 opacity-20 mix-blend-overlay"
+          style={{
+            backgroundImage: `url(${LIQUID_TEXTURE})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
 
-      <div className="max-w-5xl mx-auto px-4">
-        {/* Full deck CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="glass-panel rounded-2xl p-8 sm:p-12 lg:p-16 relative overflow-hidden mb-16 sm:mb-20"
-        >
-          {/* Decorative gradient */}
-          <div
-            className="absolute top-0 right-0 w-64 h-64 opacity-20 pointer-events-none"
-            style={{
-              background: "radial-gradient(circle, rgba(0,206,209,0.4) 0%, transparent 70%)",
-            }}
-          />
-
-          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-14">
-            {/* Orb */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex-shrink-0 w-32 h-32 sm:w-40 sm:h-40"
-              style={{ animation: "float 6s ease-in-out infinite" }}
-            >
-              <img
-                src={ORB_IMG}
-                alt="Oracle"
-                className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(123,47,190,0.3)]"
-                style={{ mixBlendMode: "screen" }}
-              />
-            </motion.div>
-
-            <div className="text-center lg:text-left">
-              <p className="text-[10px] sm:text-xs tracking-[0.5em] uppercase text-[#00CED1]/50 mb-3 font-light">
-                The Complete Collection
-              </p>
-              <h3
-                className="text-2xl sm:text-3xl lg:text-4xl font-light text-[#E8DAEF] mb-4 tracking-[0.04em]"
-                style={{ fontFamily: "'Cormorant Garamond', serif" }}
-              >
-                Unlock the Full 78-Card Deck
-              </h3>
-              <p className="text-sm text-[#D7BDE2]/50 font-light leading-relaxed max-w-lg mb-8">
-                Dive deeper into the mysteries of Tarot with the complete deck — including all Major and Minor Arcana. Beautifully designed, printed on premium card stock with holographic foil details.
+        <div className="relative z-10 container mx-auto py-20 px-6 md:px-12">
+          <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-10">
+            <div className="max-w-xl">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-6 h-px bg-white opacity-40" />
+                <span className="font-mono text-[10px] tracking-[0.4em] text-white/60 uppercase">
+                  The Full Deck
+                </span>
+              </div>
+              <h2 className="font-display text-[clamp(48px,8vw,110px)] leading-none text-white mb-4">
+                GET THE<br />FULL DECK
+              </h2>
+              <p className="font-body text-white/70 text-sm leading-relaxed max-w-sm mb-8">
+                78 cards. Major and Minor Arcana. Printed on premium matte stock with gilded edges. A complete oracle for your practice.
               </p>
               <a
                 href="https://www.etsy.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glow-button inline-block rounded-full px-10 py-4 text-white text-[10px] sm:text-xs tracking-[0.3em] uppercase font-light"
-                style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+                className="inline-flex items-center gap-3 bg-white text-[#1f1e2c] font-mono text-xs tracking-[0.3em] uppercase px-8 py-4 hover:bg-[#c8c0e0] transition-colors"
               >
                 Shop on Etsy
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </a>
             </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-2 gap-8 lg:gap-12">
+              {[
+                { num: "78", label: "Cards" },
+                { num: "22", label: "Major Arcana" },
+                { num: "56", label: "Minor Arcana" },
+                { num: "∞", label: "Readings" },
+              ].map(({ num, label }) => (
+                <div key={label} className="text-center">
+                  <div className="font-display text-[48px] leading-none text-white mb-1">{num}</div>
+                  <div className="font-mono text-[9px] tracking-[0.3em] text-white/50 uppercase">{label}</div>
+                </div>
+              ))}
+            </div>
           </div>
-        </motion.div>
+        </div>
+      </div>
 
-        {/* Email capture */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-center"
-        >
-          <p className="text-[10px] sm:text-xs tracking-[0.5em] uppercase text-[#C39BD3]/40 mb-4 font-light">
-            Daily Guidance
-          </p>
-          <h3
-            className="text-2xl sm:text-3xl lg:text-4xl font-light text-[#E8DAEF] mb-3 tracking-[0.04em]"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
-          >
-            Free Daily Card Reading
-          </h3>
-          <p className="text-sm text-[#D7BDE2]/40 font-light mb-8 max-w-md mx-auto">
-            Receive a personalized card reading in your inbox every morning to guide your day.
-          </p>
+      {/* Email capture — dark strip */}
+      <div className="relative bg-[#0f0f14] border-t border-[#1f1e2c]">
+        <div className="container mx-auto py-16 px-6 md:px-12">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+            <div>
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-6 h-px bg-[#7B2FBE]" />
+                <span className="font-mono text-[10px] tracking-[0.4em] text-[#8575a4] uppercase">
+                  Daily Oracle
+                </span>
+              </div>
+              <h3 className="font-display text-[clamp(28px,4vw,52px)] leading-none text-white mb-2">
+                FREE DAILY READING
+              </h3>
+              <p className="font-body text-[#8575a4] text-sm">
+                One card. Every morning. In your inbox.
+              </p>
+            </div>
 
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              required
-              className="flex-1 bg-transparent border border-[#7B2FBE]/20 rounded-full px-6 py-3.5 text-sm text-[#E8DAEF] placeholder-[#C39BD3]/25 focus:outline-none focus:border-[#7B2FBE]/50 transition-colors duration-300 font-light"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-            />
-            <button
-              type="submit"
-              className="glow-button rounded-full px-8 py-3.5 text-white text-[10px] sm:text-xs tracking-[0.25em] uppercase font-light whitespace-nowrap"
-              style={{ fontFamily: "'Space Grotesk', sans-serif" }}
-            >
-              Subscribe
-            </button>
-          </form>
-
-          <p className="text-[9px] text-[#C39BD3]/20 mt-4 tracking-wider font-light">
-            No spam, ever. Unsubscribe anytime.
-          </p>
-        </motion.div>
+            <form onSubmit={handleSubmit} className="flex gap-0 w-full md:w-auto md:min-w-[380px]">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="your@email.com"
+                required
+                className="flex-1 bg-[#1f1e2c] border border-[#5b4775] border-r-0 px-5 py-4 font-mono text-xs text-[#c8c0e0] placeholder-[#5c566b] tracking-wider outline-none focus:border-[#8575a4] transition-colors"
+              />
+              <button
+                type="submit"
+                className="bg-[#7B2FBE] text-white font-mono text-xs tracking-[0.3em] uppercase px-6 py-4 hover:bg-[#8575a4] transition-colors whitespace-nowrap"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
   );
