@@ -208,3 +208,4 @@ export const majorArcana: TarotCard[] = [
     message: "The circle is complete, yet the spiral continues. You are both the journey and the destination."
   }
 ];
+// cache-bust-v2
